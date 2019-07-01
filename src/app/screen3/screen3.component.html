@@ -1,0 +1,23 @@
+<body>
+<div id="content" style=" background-image: url('../assets/bkg.jpg')" >
+
+    <br><br><h1 id="head"> Count the Credentials</h1><br><br>
+
+    <form [formGroup]="textDetail">
+        <div class="container">
+           <textarea  id ="text" formControlName="myText" (keyup)="count($event)"></textarea>
+        </div>
+    </form>
+
+
+    <div id="result">
+    <br><label> Results: </label>
+    <br><br><label>Vowels:</label>{{vowelsCount}}
+    <br><label>Articles:</label>{{articleCount}}
+    <br><label>Longest Word :</label>{{lenLongest}}
+    <br><label>Shortest Word:</label>{{lenShortest}}
+    <br><label>Word Count   :</label>{{wordCount}}
+    </div>
+
+</div>
+</body>

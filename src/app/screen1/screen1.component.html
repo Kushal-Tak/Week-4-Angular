@@ -1,0 +1,18 @@
+
+<div>
+<div [chart]="pieChart"></div>
+
+<form id= "form" (submit)=addRecord($event)>
+<br>
+<label style="text-align: center">Add Record: </label>
+<br>
+<br>
+<form (submit)= addRecord($event)>
+
+<pre>
+        <label>e-mail</label>       <input type="text" id="name"/><br>
+        <label>Gender</label>       <input type="text" id="gender"/><br>
+        <label>Year</label>         <input type="text" id="year"/><br>
+        <label>Department</label>   <input type="text" id="dept"/><br>
+        <input type="submit" value="add">
+</pre>

@@ -1,0 +1,44 @@
+
+*{
+    outline: 0px;
+    margin: 0px; 
+    padding: 0 px;
+}
+
+body{
+    margin:0px;
+}
+#head{
+    margin-left: 520px;
+    color:rgba(253, 251, 246, 0.979);
+}
+
+#text{
+    width: 400px;
+    height: 300px;
+    margin-left: 470px;
+    background-color: dimgrey;
+    color: rgba(253, 251, 246, 0.979);
+
+}
+#content{
+    height: 800px;
+    width:  1600px;
+}
+    
+#result{
+    color:rgba(253, 251, 246, 0.979);
+    margin-left: 620px;
+    font-size: 25px;
+    font-family:cursive;
+    
+
+}
+
+#submit{
+    margin-left: 630px;
+    margin-top: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
