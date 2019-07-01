@@ -15,10 +15,9 @@ interface response {
 
 export class Screen1Component {
   pieChart: any;
+  barChart: any;
   data = [];
-  id = 100;
-
-
+  categories=[];
   constructor(private service: GetDataService) {
     this.getData();
   }
@@ -27,20 +26,32 @@ export class Screen1Component {
     this.service.getData().subscribe((res: response) => {
       this.data = (res.data);
       console.log(typeof(this.data));
-      this.getGenderCount(res.data);
+      this.operateData(res.data);
+      this.getBarGraph();
     })
   }
 
-  getGenderCount(data) {
+  operateData(data) {
+
+    // GET GENDER GRAPH
+
     let male = 0;
     data.map((i) => {
       if (i.gender == "Male")
         male++;
     })
-    console.log(male);
     this.genGenderGraph(male);
+
+    // GET BAR GRAPH
+
+    data.map( (i)=>
+    {
+       if( ! this.categories.includes(i.Department))
+       this.categories.push(i.Department)
+    })
   }
 
+// ************* PIE CHART --START********************
 
   genGenderGraph(male) {
     this.pieChart = new Chart({
@@ -69,6 +80,82 @@ export class Screen1Component {
     })
   }
 
+// ************* PIE CHART --END********************
+
+
+// ************* BAR CHART --START********************
+
+getBarGraph()
+{
+  this.barChart = new Chart({
+
+      title : {
+      text: 'Department Classifier'   
+   },
+     xAxis : {
+      categories: this.categories,
+      title: {
+         text: null
+      }
+   },
+      yAxis : {
+      min: 0,
+      title: {
+         text: 'Count in Numbers',
+         align: 'high'
+      },
+      labels: {
+         overflow: 'justify'
+      }
+   },
+    
+      plotOptions : {
+      bar: {
+         dataLabels: {
+            enabled: true
+         }
+      }
+   },
+      legend : {
+      layout: 'vertical',
+      align: 'right',
+      verticalAlign: 'top',
+      x: -40,
+      y: 100,
+      floating: true,
+      borderWidth: 1,
+      
+      backgroundColor:
+      Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+      shadow: true
+   },
+   credits : {
+      enabled: false
+   },
+   series:[
+      {
+        name: 'Year 1900',
+        data: [133, 156, 947, 408, 6],
+        type: undefined,
+    }, {
+        name: 'Year 2000',
+        data: [814, 841, 3714, 727, 31],
+        type: undefined,
+    }, {
+        name: 'Year 2016',
+        data: [1216, 1001, 4436, 738, 40],
+        type: undefined,
+    }
+  ]
+  });
+
+}
+
+// ************* BAR CHART --END********************
+
+
+// ADD RECORD ON USER INPUT
+
 addRecord(dt)
 {
     dt.preventDefault();
@@ -77,15 +164,10 @@ addRecord(dt)
     let year  = dt.target[2].value;
     let dept = dt.target[3].value;
 
-    console.log(email);
-
     let info = { "email": email, "gender":gender, "year":year , "Department":dept};
-    console.log(info);
     this.data.push(info);
-    this.getGenderCount(this.data);
-    console.log(this.data);
-}
+    this.operateData(this.data);
   
 }
 
-
+}

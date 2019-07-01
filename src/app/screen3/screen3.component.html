@@ -1,9 +1,9 @@
-<body>
+
 <div id="content" style=" background-image: url('../assets/bkg.jpg')" >
 
     <br><br><h1 id="head"> Count the Credentials</h1><br><br>
 
-    <form [formGroup]="textDetail">
+    <form [formGroup]="rawData">
         <div class="container">
            <textarea  id ="text" formControlName="myText" (keyup)="count($event)"></textarea>
         </div>
@@ -20,4 +20,4 @@
     </div>
 
 </div>
-</body>
+

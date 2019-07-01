@@ -12,11 +12,11 @@ export class Screen3Component  {
    articleCount=0;
    vowelsCount=0;
    wordCount=0;
-   public textDetail;
+   public rawData;
    constructor(private formBuilder: FormBuilder) { }
 
    ngOnInit() {
-     this.textDetail = this.formBuilder.group({
+     this.rawData = this.formBuilder.group({
        myText: new FormControl('')
      });
    }
@@ -24,14 +24,16 @@ export class Screen3Component  {
    count(data)
    {
       data.preventDefault();
-      let input = this.textDetail.value.myText;
-      //let input = data.target[0].value.toString();
+      let input = this.rawData.value.myText;
       let inputArray = input.trim().split(" ");
       this.wordCount= inputArray.length;
        
+      //ARRAY FOR REFERENCES
       let articles = ['a','an','the'];
       let vowels = ['a','e','i','o','u'];
       
+
+      // REQUIRED RESULT VARIABLES
       this.lenShortest=0;
       this.lenLongest=0;
       this.articleCount=0;
@@ -41,7 +43,6 @@ export class Screen3Component  {
       this.lenShortest= inputArray[0].length;
 
       inputArray.map((word)=>{
-          console.log(word);
 
           //articles count
           if(articles.includes(word.toLowerCase()))
@@ -62,6 +63,9 @@ export class Screen3Component  {
           if(this.lenShortest > word.length &&  !(articles.includes(word.toLowerCase())))
                 this.lenShortest=word.length;
       })
+
+          // Word Count
+          this.wordCount= inputArray.length
       
       
    }

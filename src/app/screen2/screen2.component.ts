@@ -40,7 +40,7 @@ export class Screen2Component {
     }, 4000);
   }
 
-  //**********AREA GRAPH --START */
+  //**********AREA GRAPH --START ***********/
 
   getAreaGraph(){
   this.areaChartOptions = {   
