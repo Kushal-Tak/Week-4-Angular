@@ -23,7 +23,7 @@
     "@angular/router": "~8.0.1",
     "angular-highcharts": "^8.0.2",
     "chart.js": "^2.8.0",
-    "highcharts": "^7.1.2",
+    "highcharts": "^7.2.2",
     "highcharts-angular": "^2.4.0",
     "ng2-charts": "^2.3.0",
     "rxjs": "~6.4.0",
